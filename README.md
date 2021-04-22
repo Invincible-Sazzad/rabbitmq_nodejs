@@ -1,2 +1,2 @@
 # rabbitmq_nodejs
- RabbitMQ nodejs tutorial
+Just playing around amqp node js library of RabbitMQ
