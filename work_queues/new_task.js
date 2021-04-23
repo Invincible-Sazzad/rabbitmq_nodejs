@@ -17,6 +17,7 @@ amqp.connect('amqp://localhost', function(err, connection){
         var queue = 'mytask_queue';
         var message = process.argv.slice(2).join(' ') || 'Hello world!';
 
+        //The durability options let the tasks survive even if RabbitMQ is restarted.
         channel.assertQueue(queue, {
             durable: true
         });

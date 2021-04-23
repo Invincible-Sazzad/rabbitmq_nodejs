@@ -20,7 +20,9 @@ amqp.connect('amqp://localhost', function(err, connection){
             durable: true
         });
 
-        //channel.prefetch(1);
+        //don't dispatch a new message to a worker until it has processed and acknowledged the previous one
+        channel.prefetch(1);
+        
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
         // Consume the message when RabbitMQ pushes the message asynchronously
@@ -39,6 +41,7 @@ amqp.connect('amqp://localhost', function(err, connection){
             //noAck: true
 
             // manual acknowledgment mode
+            // see https://www.rabbitmq.com/confirms.html for details
             noAck: false
         });
     });
