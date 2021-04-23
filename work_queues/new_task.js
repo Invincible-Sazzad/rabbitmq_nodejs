@@ -14,11 +14,11 @@ amqp.connect('amqp://localhost', function(err, connection){
         }
 
         // declare a queue 
-        var queue = 'task_queue';
+        var queue = 'mytask_queue';
         var message = process.argv.slice(2).join(' ') || 'Hello world!';
 
         channel.assertQueue(queue, {
-            durable: false
+            durable: true
         });
 
         channel.sendToQueue(queue, Buffer.from(message), {
