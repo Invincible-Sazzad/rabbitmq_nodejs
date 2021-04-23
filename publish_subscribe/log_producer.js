@@ -18,6 +18,10 @@ amqp.connect('amqp://localhost', function(err, connection){
         var exchange = 'logs';
         var message = process.argv.slice(2).join(' ') || 'Hello world!';
 
+        /*
+        * In this case, RabbitMQ creates a randomly generated queue name
+        */
+
         //creating a fanout exchange
         channel.assertExchange(exchange, 'fanout', {
             durable: false

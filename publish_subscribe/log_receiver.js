@@ -22,6 +22,10 @@ amqp.connect('amqp://localhost', function(err, connection){
             durable: false
         });
 
+        /*
+        * In this case, RabbitMQ creates a randomly generated queue name
+        */
+
         channel.assertQueue('', {
             exclusive: true
         }, function(err2, q){
